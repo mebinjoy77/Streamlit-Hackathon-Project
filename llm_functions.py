@@ -18,7 +18,7 @@ User Inputs
 
 code_gen_prompt = """
 You are a python coding assistant. The user will provide a code description. Return only the nedded code for the user description.
-Add suggestions , explanations as comments in the code. You should only return the code. Put the code between the ```python syntax.
+Add suggestions , explanations as comments in the code.Also give explanations outside of code if possible. Put the code between the ```python syntax.
 User query = {query}
 """
 @st.cache_data
