@@ -11,7 +11,7 @@ import re
 st.set_page_config(layout="wide")
 float_init(theme=True, include_unstable_primary=False)
 
-os.environ['REPLICATE_API_TOKEN'] = "r8_YPFVKiy1WorCCageHX3HJD4iljgBNc21Z9N5q"
+os.environ['REPLICATE_API_TOKEN'] = ""
 
 
 st.header("Codey - Coding Assistant",divider="blue")
