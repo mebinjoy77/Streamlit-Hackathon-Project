@@ -11,8 +11,7 @@ import re
 st.set_page_config(layout="wide")
 float_init(theme=True, include_unstable_primary=False)
 
-os.environ['REPLICATE_API_TOKEN'] = ""
-
+os.environ['REPLICATE_API_TOKEN'] = st.secrets['REPLICATE_KEY']
 
 st.header("Codey - Coding Assistant",divider="blue")
 st.write("Welcome to Codey , your very own python coding assistant  , powered by Snowflake Artic. ")
