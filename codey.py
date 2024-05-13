@@ -20,7 +20,7 @@ if code_req:
     code_gen = get_gen_code(code_req)
     python_matches = re.findall(r"```python\n(.*?)\n```", code_gen, re.DOTALL)
     if len(python_matches)>0:
-        python_code = "\\n".join(python_matches)
+        python_code = "\n".join(python_matches)
     else:
         python_code = ""
     with st.container():
