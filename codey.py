@@ -60,6 +60,8 @@ if st.button(label="Generate Solution"):
 if "button" in st.session_state:
     if st.session_state.button:
         code_gen = get_gen_code(code_req)
+        st.session_state.messages.append({"user":code_req})
+        st.session_state.messages.append({"assistant":code_gen})
         python_matches = re.findall(r"```python\n(.*?)\n```", code_gen, re.DOTALL)
         if len(python_matches)>0:
             python_code = "\\n".join(python_matches)
