@@ -90,7 +90,12 @@ if "button" in st.session_state:
                 with st.container(border=True):
                     placheolder = st.empty()
                     with st.chat_message('assistant'):
-                        placheolder.markdown(code_gen)
+                        if len(st.session_state.messages) < 1:
+                            placheolder.markdown(code_gen)
+                        else:
+                            asst_code = st.session_state.messages[-1]["assistant"]
+                            placheolder.markdown(asst_code)
+
                     with st.container():
                         button_b_pos = "0rem"
                         button_css = float_css_helper(width="2.2rem", bottom=button_b_pos, transition=0)
@@ -113,5 +118,4 @@ if "button" in st.session_state:
                         ):
                             response += event.data
                             placheolder.markdown(response.strip("```{}"))
-                        st.session_state.messages.append({"user":prompt})
-                        st.session_state.messages.append({"assistant":response})
+                        st.session_state.messages.append({"user":prompt,"assistant":response})
