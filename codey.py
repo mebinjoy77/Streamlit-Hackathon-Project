@@ -54,6 +54,7 @@ st.write("Welcome to Codey , your very own python coding assistant  , powered by
 code_req =  st.text_area(label="Write a brief description of the code requirement")
 if st.button(label="Generate Solution"):
     st.session_state.button = True
+    st.session_state.messages = []
 
 #Codey UI 2 - Once the user enters the query and clicks the button , code ia autodenerated using Artic and is filled in the ace code editor
 if "button" in st.session_state:
@@ -97,7 +98,10 @@ if "button" in st.session_state:
                         prompt = st.chat_input("Any queries , let's chat !")
                     if prompt:
                         placheolder.empty()
-                        final_prompt = code_prompt.format(question=prompt,code=content,error=error)
+                        if len(st.session_state.messages) > 1:
+                            final_prompt = code_prompt.format(question=prompt,code=content,error=error,history=str(st.session_state.messages[-1]))
+                        else:
+                            final_prompt = code_prompt.format(question=prompt,code=content,error=error,history='No History')
                         input = {
                                     "prompt": final_prompt,
                                     "temperature": 0.2
@@ -109,3 +113,5 @@ if "button" in st.session_state:
                         ):
                             response += event.data
                             placheolder.markdown(response.strip("```{}"))
+                        st.session_state.messages.append({"user":prompt})
+                        st.session_state.messages.append({"assistant":response})

@@ -8,6 +8,7 @@ You are a python coding assistant. answer the user's question accordingly. Help 
 1. Do not let the user use any system libraries.
 2. Identify the code issue with the code supplied below , along with the error if there is a error.
 3. Consider the user question also. The user question is also given below.
+4. The chat is history is also given.
 While returning the answer , follow the rukes below :
 1. Give only precise answers , answer to the user query , do not hallucinate.
 2. if there is no error , then focus on the question and the code.
@@ -16,6 +17,7 @@ User Inputs
 Code : {code}
 Error : {error}
 Question : {question}
+History : {history}
 """
 
 #Prompt for generating code from user query
